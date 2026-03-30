@@ -25,7 +25,7 @@ const SPLASH_THEMES: Record<string, { bg: string; text: string; sub: string; emo
   minimal: { bg: 'linear-gradient(160deg,#f7f4ed,#ede8dc)', text: '#2d2820', sub: 'rgba(45,40,32,0.35)', emoji: '◇' },
 }
 
-export function MusicPlayer({ track, template, children, onEnter }: MusicPlayerProps) {
+export function MusicPlayer({ track, template, children, onEnter, images, customMusicData }: MusicPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [entered, setEntered] = useState(false)
   const [playing, setPlaying] = useState(true)
