@@ -15,11 +15,7 @@ const TTL = 60 * 60 * 24 * 30 // 30 days
 
 
 export async function saveWish(wish: Wish): Promise<void> {
-  console.log("Saving wish:", wish)
-
   await redis.set(`wish:${wish.id}`, wish, { ex: TTL })
-
-  console.log("Saved to Redis:", `wish:${wish.id}`)
 }
 
 export async function getWish(id: string): Promise<Wish | null> {

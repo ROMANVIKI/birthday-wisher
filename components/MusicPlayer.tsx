@@ -212,3 +212,4 @@ function MusicControls({ playing, volume, onToggle, onVolume, template }: MusicC
     </div>
   )
 }
+

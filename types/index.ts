@@ -1,6 +1,21 @@
-export type WishTemplate = 'starfall' | 'retro' | 'nature' | 'minimal'
-export type MusicTrack = 'lofi' | 'jazz' | 'orchestral' | 'acoustic' | 'none'
-export type TextEffect = 'typewriter' | 'reveal' | 'float'
+export type WishTemplate = 'starfall' | 'retro' | 'nature' | 'minimal' | 'art'
+export type MusicTrack = 'lofi' | 'jazz' | 'orchestral' | 'acoustic' | 'custom' | 'none'
+export type TextEffect = 'reveal' | 'typewriter' | 'float'
+
+export const MUSIC_LABELS: Record<MusicTrack, string> = {
+  lofi: 'Lo-Fi',
+  jazz: 'Jazz',
+  orchestral: 'Orchestral',
+  acoustic: 'Acoustic',
+  custom: 'Custom Upload',
+  none: 'No Music',
+}
+
+export const TEXT_EFFECT_LABELS: Record<TextEffect, string> = {
+  reveal: 'Fade Reveal',
+  typewriter: 'Typewriter',
+  float: 'Float Up',
+}
 
 export interface Wish {
   id: string
@@ -11,25 +26,8 @@ export interface Wish {
   musicTrack: MusicTrack
   textEffect: TextEffect
   createdAt: number
-}
-
-export const MUSIC_LABELS: Record<MusicTrack, string> = {
-  lofi: 'Lo-fi Chill',
-  jazz: 'Upbeat Jazz',
-  orchestral: 'Orchestral',
-  acoustic: 'Acoustic Guitar',
-  none: 'No Music',
-}
-
-export const TEMPLATE_LABELS: Record<WishTemplate, string> = {
-  starfall: 'Starfall',
-  retro: 'Retro',
-  nature: 'Nature',
-  minimal: 'Minimal',
-}
-
-export const TEXT_EFFECT_LABELS: Record<TextEffect, string> = {
-  typewriter: 'Typewriter',
-  reveal: 'Reveal',
-  float: 'Float In',
+  // New fields
+  images?: string[]          // base64 encoded images (max 3)
+  customMusicData?: string   // base64 encoded mp3 (max ~3MB for 30sec)
+  customMusicName?: string   // original filename
 }
