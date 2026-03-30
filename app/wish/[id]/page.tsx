@@ -18,12 +18,15 @@ const TEMPLATES: Record<WishTemplate, React.ComponentType<{ wish: Wish }>> = {
 }
 
 interface Props {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const wish = await getWish(params.id)
+  const { id } = await params
+
+  const wish = await getWish(id)
   if (!wish) return { title: 'Birthday Wish' }
+
   return {
     title: `Happy Birthday, ${wish.recipientName}! 🎂`,
     description: `${wish.senderName} has a birthday surprise for you!`,
@@ -31,8 +34,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function WishPage({ params }: Props) {
-  const wish = await getWish(params.id)
-  if (!wish) notFound()
+  const { id } = await params
+
+  console.log("ID:", id) // optional debug
+
+  const wish = await getWish(id)
+
+  if (!wish) {
+    console.log("Wish not found in Redis")
+    notFound()
+  }
 
   const Template = TEMPLATES[wish.template] ?? StarfallTemplate
 
