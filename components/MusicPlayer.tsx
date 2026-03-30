@@ -4,9 +4,9 @@ import type { MusicTrack } from '@/types'
 
 const TRACKS: Record<string, string> = {
   lofi: '/music/lofi-birthday-music1.mp3',
-  jazz: '/music/ The_Birthday_Massacre.mp3',
-  orchestral: '/music/jaanu_bgm_music.mp3',
-  acoustic: '/music/3_movie_flure.mp3',
+  birthday_massacre: '/music/ The_Birthday_Massacre.mp3',
+  jaanu: '/music/jaanu_bgm_music.mp3',
+  3movie: '/music/3_movie_flure.mp3',
 }
 
 interface MusicPlayerProps {

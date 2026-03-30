@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Footer from "@/components/Footer"
 
 export const metadata: Metadata = {
   title: 'Birthday Wisher — Create Magical Birthday Surprises',
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body style={{ margin: 0, padding: 0 }}>
         {children}
+        <Footer />
       </body>
     </html>
   )
