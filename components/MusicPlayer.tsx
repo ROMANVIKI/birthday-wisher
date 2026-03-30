@@ -14,6 +14,8 @@ interface MusicPlayerProps {
   template: string
   children: React.ReactNode
   onEnter?: () => void
+  images?: string[]              // ✅ add this
+  customMusicData?: string
 }
 
 const SPLASH_THEMES: Record<string, { bg: string; text: string; sub: string; emoji: string }> = {
